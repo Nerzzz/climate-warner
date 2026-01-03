@@ -31,5 +31,14 @@ function loadDailyWeather(_data){
     document.getElementById("apparent-temp").innerHTML = `Feels like ${Math.round(data.current.apparent_temperature)+data.current_units.temperature_2m}`;
     document.getElementById("precipitation-rate").innerHTML = Math.round(data.daily.precipitation_probability_max)+data.daily_units.precipitation_probability_max;
 
+    if(data.current.is_day == 1){
+        document.querySelector(".current-weather").classList.add("day");
+        document.querySelector(".current-weather").classList.remove("night");
+    }
+    else{
+        document.querySelector(".current-weather").classList.add("night");
+        document.querySelector(".current-weather").classList.remove("day");
+    }
+
     wmoCodeToImage("current-weather-ilustration", data.current.is_day, data.current.weather_code);
 }

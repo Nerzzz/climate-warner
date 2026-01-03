@@ -99,12 +99,18 @@ main{
     grid-template-columns: 2fr 2fr 2fr 2fr;
     grid-auto-rows: 280px;
     
+    .day{
+        background-image: linear-gradient(#50B3E4, #2697cf);
+    }
+    .night{
+        background-image: linear-gradient(#222525, #081116);
+    }
+
     .current-weather{
         display: flex;
         align-items: center;
         justify-content: space-between;
         grid-column: span 2;
-        background-image: linear-gradient(#50B3E4, #2697cf);
         border-radius: 10px;
         padding: 25px;
         color: #ffffff;
