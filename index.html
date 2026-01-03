@@ -3,105 +3,59 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🌦️ Climate Warner</title>
+        <link rel="shortcut icon" href="./assets/images/climate/day/mostly-clear.svg" type="image/x-icon">
+        <title>Climate Warner</title>
 
         <script src="./assets/js/userPosition.js"></script>
-        <script src="./assets/js/wheatherData.js"></script>
+        <script src="./assets/js/weatherData.js"></script>
+        <script src="./assets/js/view.js"></script>
 
         <link rel="stylesheet" href="./assets/css/index.css">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
 
         <script>
-            function format(id, content){
-                document.getElementById(id).innerHTML = content;
-            }
-
-            function wCodeToImage(id, code){
-                
-                const images = [
-                    "clear.svg", "mostly_clear.svg", "partly_cloudy.svg", "mostly_cloudy.svg", "dust.svg", "light_rain.svg", "rain.svg", "snow.svg", "heavy_rain.svg", "thunderstorm.svg"
-                ];
-
-                let index;
-
-                if(code == 0) index = 0;
-                else if(code == 1) index = 1;
-                else if(code == 2) index = 2;
-                else if(code == 3) index = 3;
-                else if(code >= 45 && code <= 48) index = 4;
-                else if(code >= 51 && code <= 57) index = 5;
-                else if(code >= 61 && code <= 67) index = 6;
-                else if(code >= 71 && code <= 77) index = 7;
-                else if(code >= 80 && code <= 82) index = 8;
-                else if(code > 82) index = 9;
-                
-                document.getElementById(id+"-img").src = "./assets/images/climate"+images[index]; // TODO: Criar imagens de clima
-                document.getElementById(id+"-img").title = images[index];
-            }
-
             (async () => {
                 const [lat, lon] = await getPosition();
                 return getDailyWeather(lat, lon);
             })().then((todayWeather) => {
-                const data = JSON.parse(JSON.stringify(todayWeather));
-                
-                // HEADER CONTENT
-                const day = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-                format("day-of-week", day[(new Date().getUTCDay())-1]);
-                format("GMT", data.timezone_abbreviation);
-                format("register-hour", `${new Date(data.current.time).getHours()}:${new Date(data.current.time).getMinutes()}`);
-
-                // DAILY CONTENT
-                // principal card
-                if(new Date(data.current.time).getHours() >= 6 && new Date(data.current.time).getHours() <= 17){
-                    document.querySelector(".daily-temp").style.backgroundColor = "#46a3e0";
-                } 
-                else { 
-                    document.querySelector(".daily-temp").style.backgroundColor = "#1c1d1f"; 
-                }
-                format("temperature-2m", Math.round(data.current.temperature_2m)+"°C");
-                //wCodeToImage("daily", data.current.weather_code);
+                loadDailyWeather(JSON.stringify(todayWeather));
             });
         </script>
     </head>
     <body>
-        <aside><h2>Climate Warner</h2></aside>
-        <main>
-            <header>
-                <h2 id="day-of-week"></h2>
-                <div class="other">
-                    <span id="GMT"></span>
-                    <span id="register-hour"></span>
+        <section class="body-content">
+            <aside>
+                <img src="./assets/images/climate/day/mostly-clear.svg" alt="Sun with clouds icon">
+                <div class="actions-buttons">
+                    <button>
+                        <span>Alerts</span>
+                        <div class="notification"></div>
+                    </button>
+                    <button>
+                        <span>Configuration</span>
+                    </button>
                 </div>
-            </header>
-            <div>
-                <section class="daily-temp">
-                    <div class="actual-temp">
-                        <img src="https://maps.gstatic.com/weather/v1/clear.svg" id="daily-img" alt="">
-                        <h1 id="temperature-2m"></h1>
-                    </div>
-                        <div class="card">
-                            <div class="temp">
-                                <img id="morning-img" src="" alt="">
-                                <span id="morning-temp"></span>
-                            </div>
-                            <span>Morning</span>
+            </aside>
+            <main>
+                <div class="main-content">
+                    <section class="current-weather">
+                        <div class="info">
+                            <h2>Now</h2>
+                            <p id="reg-hour" title="Register hour">00:00</p>
                         </div>
-                        <div class="card">
-                            <div class="temp">
-                                <img id="noon-img" src="" alt="">
-                                <span id="noon-temp"></span>
+                        <img src="./assets/images/climate/day/mostly-clear.svg" id="current-weather-ilustration" alt="">
+                        <div class="data">
+                            <h1 id="current-temp" title="Current temperature">0°C</h1>
+                            <p id="apparent-temp">Feels like 0°C</p>
+                            <div class="prep-rate" title="Precipitation probability">
+                                <i class="ti ti-droplet-half-2-filled"></i>
+                                <p id="precipitation-rate">0%</p>
                             </div>
-                            <span>Noon</span>
                         </div>
-                        <div class="card">
-                            <div class="temp">
-                                <img id="Night" src="" alt="">
-                                <span id="night-temp"></span>
-                            </div>
-                            <span>Night</span>
-                        </div>
-                </section>
-            </div>
-        </main>
+                    </section>
+                </div>
+            </main>
+        </section>
     </body>
 </html>

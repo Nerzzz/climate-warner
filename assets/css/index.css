@@ -1,87 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@keyframes pulse {
+    0%{
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50%{
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
 
 *{
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    font-family: "Google Sans";
+    font-family: "Poppins";
 }
 
 body{
-    background-color: #f5f5f5;
+    background-color: #ededed;
+}
+
+.body-content{
     display: flex;
     flex-direction: row;
     height: 100vh;
-    gap: 20pt;
-    padding: 0 20pt 20pt 0;
+    width: 100vw;
 }
 
-aside {
-    background-color: #fff;
-    width: fit-content;
-    height: 80%;
-    border-radius: 0 8px 8px 0;
-}
-
-header{
+aside{
+    background-color: #ffffff;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    background-color: #fff;
-    padding: 10pt 20pt;
-    border-radius: 0 0 8px 8px;
-
-    #day-of-week{
-        font-weight: 500;
-        font-size: 16pt;
+    gap: 20px;
+    padding: 25px 15px;
+    flex: 2;
+    
+    img{
+        width: 60px;
+        height: 60px;
     }
 
-    .other{
+    .actions-buttons{
         display: flex;
-        gap: 10pt;
-        font-size: 10pt;
+        gap: 10px;
+        flex-direction: column;
+        width: 100%;
+
+        button{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12pt;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: transparent;
+            padding: 4px 12px;
+            border-radius: 5px;
+            text-align: left;
+            transition: 250ms;
+
+            .notification{
+                position: relative;
+                width: 8px;
+                height: 8px;
+                border-radius: 100%;
+                background-color: #ec1212;
+                animation: pulse infinite ease-in-out 1s;
+                display: none;
+            }
+        }
+
+        button:hover{
+            background-color: #eeeeee;
+        }
     }
 }
 
 main{
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 20pt;
-    flex: 1;
+    flex: 12;
 }
-
-.daily-temp{
-    display: flex;
-    flex-direction: row;
-    background-color: #46a3e0;
-    border-radius: 8px;
-    color: #fff;
-    width: 100%;
-    padding: 20pt;
+.main-content{
+    padding: 28px;
+    display: grid;
     gap: 20px;
-
-    .actual-temp{
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-auto-rows: 280px;
+    
+    .current-weather{
         display: flex;
-        flex-direction: column;
+        align-items: center;
         justify-content: space-between;
-        flex: 1;
+        grid-column: span 2;
+        background-image: linear-gradient(#50B3E4, #2697cf);
+        border-radius: 10px;
+        padding: 25px;
+        color: #ffffff;
+
+        .info{
+            position: absolute;
+            align-self: self-start;
+            h2{
+                font-size: 20pt;
+                font-weight: 500;
+            }
+            p{
+                margin-top: -8px;
+                font-size: 11pt;
+                font-weight: 300;
+            }
+        }
 
         img{
-            height: 50pt;
-            width: 50pt;
+            width: 120px;
+            height: 120px;
         }
 
-        h1{
-            font-size: 28pt;
-            font-weight: 400;
-            justify-self: end;
-        }
-    }
+        .data{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-align: right;
 
-    .card{
-        background-color: #fff;
-        width: 180px;
-        height: 180px;
-        border-radius: 8px;
+            #current-temp{
+                font-size: 40pt;
+                line-height: 40pt;
+                font-weight: 400;
+            }
+
+            #apparent-temp{
+                font-size: 13pt;
+                line-height: 13pt;
+                font-weight: 200;
+            }
+
+            .prep-rate{
+                display: flex;
+                justify-content: end;
+                gap: 5px;
+                font-size: 13pt;
+                line-height: 13pt;
+                font-weight: 200;
+            }
+        }
+
     }
 }
