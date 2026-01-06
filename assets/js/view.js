@@ -1,10 +1,9 @@
 function wmoCodeToImage(id, isDay, wmoCode){
     
     const images = [
-        "clear.svg", "mostly_clear.svg", "partly_cloudy.svg", "fog.svg", "mostly_cloudy.svg", "light_rain.svg", "rain.svg", "snow.svg", "heavy_rain.svg", "thunderstorm.svg"
+        "clear.svg", "mostly-clear.svg", "partly-cloudy.svg", "fog.svg", "mostly-cloudy.svg", "light-rain.svg", "rain.svg", "snow.svg", "heavy-rain.svg", "thunderstorm.svg"
     ];
     let index;
-    let src;
 
     if(wmoCode == 0) index = 0;
     else if(wmoCode == 1) index = 1;
