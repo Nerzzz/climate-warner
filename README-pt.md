@@ -2,7 +2,7 @@
 
 O Climate Warner é um sistema que transmite informações climaticas da região para usuário.
 
-### Funcionamento
+### Funcionalidades do sistema
 
 Funciona de forma simples, o usuário acessa o site e pode verificar as condições climáticas baseadas em sua localização atual.  
 Existem diversas funcionalidades, como o alerta ao usuário de potenciais adversidades climáticas, previsão do tempo dos próximos 7 dias, compararação do clima do dia atual com o do dia anterior e posterior, analize do clima ao decorrer do dia e mais.
