@@ -13,9 +13,4 @@ Clique [aqui](https://climatewarner.vercel.app) para acessar o site.
 
 No desenvolvimento desse projeto, visei o estudo das funções asincrônas do JavaScript, além da utilização de HTML 5 e CSS 3 para a construção e estilização das elementos da página.
 
-### APIs
-
-- [Open-Meteo](https://open-meteo.com/): API climática gratuíta de código aberto.
-- [geolocalizator](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API): API de geolocalização nativa do JavaScript.
-
 Leia a versão em [Inglês](README.md).
