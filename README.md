@@ -12,9 +12,4 @@ Click [here](climate-warner.vercel.app) to access the web app.
 
 This project was developed with a focus on studying asynchronous JavaScript functions, in addition to using HTML 5 and CSS 3 in the structuring and styling of the page.
 
-### APIs
-
-- [Open-Meteo](https://open-meteo.com/): Free open-source weather API.
-- [Geolocalizator](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API): JavaScript’s native geolocation API.
-
 Read the [Portuguese](README-pt.md) version.
