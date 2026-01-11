@@ -16,7 +16,10 @@ function wmoCodeToImage(id, isDay, wmoCode){
     else if(wmoCode >= 80 && wmoCode <= 82) index = 8;
     else if(wmoCode > 82) index = 9;
 
-    const folder = isDay === 1 ? "day" : "night";
+    let folder = "day";
+    if(isDay <= 1){
+        folder = isDay === 1 ? "day" : "night";
+    }
 
     document.getElementById(id).src = `../assets/images/climate/${folder}/${images[index]}`;
 }
@@ -40,4 +43,28 @@ function loadDailyWeather(_data){
     }
 
     wmoCodeToImage("current-weather-ilustration", data.current.is_day, data.current.weather_code);
+
+    loadDayForecast(_data);
+
+    loadDayForecastHourly(_data);
+}
+
+function loadDayForecast(_data){
+    const data = JSON.parse(_data);
+
+    wmoCodeToImage("day-weather-ilustration", 1, data.hourly.weather_code[8]);
+    document.getElementById("morning-temperature").innerHTML = `${Math.round(data.hourly.temperature_2m[8])}${data.hourly_units.temperature_2m}`;
+    document.getElementById("morning-precipitation-rate").innerHTML = `${Math.round(data.hourly.precipitation_probability[8])}${data.hourly_units.precipitation_probability}`;
+    
+    wmoCodeToImage("noon-weather-ilustration", 2, data.hourly.weather_code[14]);
+    document.getElementById("noon-temperature").innerHTML = `${Math.round(data.hourly.temperature_2m[14])}${data.hourly_units.temperature_2m}`;
+    document.getElementById("noon-precipitation-rate").innerHTML = `${Math.round(data.hourly.precipitation_probability[14])}${data.hourly_units.precipitation_probability}`;
+    
+    wmoCodeToImage("night-weather-ilustration", 0, data.hourly.weather_code[20]);
+    document.getElementById("night-temperature").innerHTML = `${Math.round(data.hourly.temperature_2m[20])}${data.hourly_units.temperature_2m}`;
+    document.getElementById("night-precipitation-rate").innerHTML = `${Math.round(data.hourly.precipitation_probability[20])}${data.hourly_units.precipitation_probability}`;
+}
+
+function loadDayForecastHourly(_data){
+    
 }
