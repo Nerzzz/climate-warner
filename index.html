@@ -3,107 +3,54 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="./assets/images/climate/day/mostly-clear.svg" type="image/x-icon">
         <title>Climate Warner</title>
 
-        <script src="./assets/js/userPosition.js"></script>
-        <script src="./assets/js/weatherData.js"></script>
-        <script src="./assets/js/view.js"></script>
+        <link rel="shortcut icon" href="./assets/images/climate/day/mostly-clear.svg" type="image/x-icon">
 
-        <script type="module" src="./assets/js/index.js"></script>
+        <link rel="stylesheet" href="./src/css/reset.css">
+        <link rel="stylesheet" href="./src/css/variables.css">
+        <link rel="stylesheet" href="./src/css/index.css">
 
-        <link rel="stylesheet" href="./assets/css/index.css">
-        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.35.0/tabler-icons.min.css">
 
-        <script>
-            (async () => {
-                const [lat, lon] = await getPosition();
-                return getDailyWeather(lat, lon);
-            })().then((todayWeather) => {
-                loadDailyWeather(JSON.stringify(todayWeather));
-            });
-        </script>
+        <script type="module" src="./src/js/index.js"></script>
     </head>
     <body>
-        <section class="body-content">
-            <aside>
-                <img src="./assets/images/climate/day/mostly-clear.svg" alt="Sun with clouds icon">
-                <div class="actions-buttons">
-                    <button>
-                        <span>Alerts</span>
-                        <div class="notification"></div>
-                    </button>
-                    <button>
-                        <span>Configuration</span>
-                    </button>
-                </div>
-            </aside>
-            <main>
-                <div class="main-content">
-                    <section class="current-weather">
-                        <div class="info">
-                            <h2>Now</h2>
-                            <p id="reg-hour" title="Register hour">00:00</p>
-                        </div>
-                        <img src="./assets/images/climate/day/mostly-clear.svg" id="current-weather-ilustration" alt="">
-                        <div class="data">
-                            <h1 id="current-temp" title="Current temperature">0°C</h1>
-                            <p id="apparent-temp">Feels like 0°C</p>
-                            <div class="prep-rate" title="Precipitation probability">
+        <main>
+            <section class="today-weather">
+                <div class="current-weather">
+                    <h2>Today Weather</h2>
+                    <div class="content">
+                        <img id="today-ilustration" src="./assets/images/climate/day/mostly-clear.svg">
+                        <div class="current-stats">
+                            <span id="current-temperature"></span>
+                            <span id="current-like"></span>
+                            <div class="preciptation">
                                 <i class="ti ti-droplet-half-2-filled"></i>
-                                <p id="precipitation-rate">0%</p>
+                                <p id="current-prec-rate"></p>
                             </div>
                         </div>
-                    </section>
-                    <section class="daily-weather">
-                        <div class="carousel">
-                            
-                            <div class="card day">
-                                <h1>Morning</h1>
-                                <div class="content">
-                                    <img src="./assets/images/climate/day/clear.svg" id="day-weather-ilustration" alt="">
-                                    <div class="data">
-                                        <p id="morning-temperature" class="temp">0°C</p>
-                                        <div class="precipitation">
-                                            <i class="ti ti-droplet-half-2-filled"></i>
-                                            <p id="morning-precipitation-rate">0%</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card noon">
-                                <h1>Noon</h1>
-                                <div class="content">
-                                    <img src="./assets/images/climate/day/clear.svg" id="noon-weather-ilustration" alt="">
-                                    <div class="data">
-                                        <p id="noon-temperature" class="temp">0°C</p>
-                                        <div class="precipitation">
-                                            <i class="ti ti-droplet-half-2-filled"></i>
-                                            <p id="noon-precipitation-rate">0%</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card night">
-                               <h1>Night</h1> 
-                               <div class="content">
-                                    <img src="./assets/images/climate/day/clear.svg" id="night-weather-ilustration" alt="">
-                                    <div class="data">
-                                        <p id="night-temperature" class="temp">0°C</p>
-                                        <div class="precipitation">
-                                            <i class="ti ti-droplet-half-2-filled"></i>
-                                            <p id="night-precipitation-rate">0%</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    </div>
                 </div>
-            </main>
-        </section>
+                <div id="hourly-weather">
+                    <template id="hourly-item-template">
+                        <div class="hourly-item">
+                            <span class="hour">12:00</span>
+                            <img class="ilustration" src="./assets/images/climate/day/mostly-clear.svg" alt="">
+                            <div class="stats">
+                                <div>
+                                    <i class="ti ti-temperature"></i>
+                                    <span class="temperature">0°C</span>
+                                </div>
+                                <div>
+                                    <i class="ti ti-cloud-rain"></i>
+                                    <span class="probability">0mm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </section>
+        </main>
     </body>
 </html>
