@@ -26,10 +26,24 @@ body{
     display: flex;
     flex-direction: column;
     padding: 20px 40px;
-    background-image: linear-gradient(-120deg, #4db2ec, #5dd6f5);
     border-radius: 8px;
     color: #fff;
     flex: 1;
+}
+
+.past{
+    opacity: 0.6;
+}
+
+.now{
+    border: solid 2px #4db2ec;
+}
+
+.day{
+    background-image: linear-gradient(-120deg, #4db2ec, #5dd6f5);
+}
+.night{
+    background-image: linear-gradient(-120deg, #241d5e, #2f306b);
 }
 
 .current-weather h2{
