@@ -7,7 +7,6 @@ function main(){
             getDaily(_lat, _lon);
         });
     } else {
-        // User input his location (Future)
         alert("Sorry, your browser don't have geolocation suport.");
     }
 }
