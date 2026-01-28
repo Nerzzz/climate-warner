@@ -81,7 +81,7 @@ async function getDaily(lat, lon) {
                 clone.querySelector(".ilustration").setAttribute("src", selectWeatherIlustrationSrc(data.hourly.weather_code[index], `${new Date(_hour).getHours()}`))
                 clone.querySelector(".hour").innerHTML = formatHour(_hour);
                 clone.querySelector(".temperature").innerHTML = formatTemperature(data.hourly.temperature_2m[index], hourUnits.temperature_2m);
-                clone.querySelector(".probability").innerHTML = `${Math.round(data.hourly.precipitation[index])}${hourUnits.precipitation}`;
+                clone.querySelector(".probability").innerHTML = `${data.hourly.precipitation[index]}${hourUnits.precipitation}`;
 
                 hourlyContainer.appendChild(clone);
             });
