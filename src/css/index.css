@@ -11,8 +11,12 @@
 
 body{
     background-color: var(--page-bg-color);
+}
+
+main{
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .today-weather{
@@ -26,7 +30,7 @@ body{
     display: flex;
     flex-direction: column;
     padding: 20px 40px;
-    border-radius: 8px;
+    border-radius: 0 0 8px 8px;
     color: #fff;
     flex: 1;
 }
@@ -100,6 +104,11 @@ body{
     padding: 20px 30px;
     gap: 10px;
     height: 100%;
+    transition: 100ms;
+}
+
+#hourly-weather .hourly-item:hover{
+    transform: scale(0.96);
 }
 
 .hourly-item .ilustration{
@@ -125,9 +134,55 @@ body{
     gap: 5px;
 }
 
-@media screen and (min-width: 800px) {
+.today-variables {
+    background-color: var(--item-bg-color);
+    padding: 40px 20px;
+}
+
+.today-variables h1{
+    font-weight: 500;
+    font-size: 20pt;
+}
+
+.today-variables .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+.today-variables .card h3{
+    align-self: self-start;
+}
+
+.today-variables .wind div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.today-variables .wind div #wind-direction{
+    font-weight: 300;
+    font-size: 24pt;
+    margin-top: -8px;
+}
+
+.today-variables .wind div p{
+    font-size: 8pt;
+}
+
+@media screen and (min-width: 850px) {
+    body{
+        padding: 10px;
+    }
+
     .today-weather{
         flex-direction: row;
-        padding: 10px;
+    }
+    .today-weather .current-weather{
+        border-radius: 8px;
     }
 }
